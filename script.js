@@ -5,5 +5,14 @@ function getComputerChoice(computerChoice){
     return choices[computerChoice];
 }
 
-getComputerChoice();
+function getHumanChoice(humanChoice){
+    let choice = prompt("Rock, paper, scissors?: ")
+    console.log(choice);
+}
+
+//getHumanChoice()//
+//getComputerChoice()//
+
+
+
 
