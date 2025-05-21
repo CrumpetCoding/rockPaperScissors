@@ -70,26 +70,40 @@ function playRound(computerChoice, humanChoice){
                 console.log("It's a draw!");
             }
             break;
-
+            }
         default:
             console.log("ERROR Invalid input. Please try again.");
-        
-            }
     }
 
 
 
 }
 
-function playGame(){
-    let humanScore = 0;
-    let computerScore = 0;
-    
-    playRound();
+function playGame(humanScore, computerScore){
+
+    for (let i = 0; i < 5; i++){
+        playRound();
+    }
+
+    if (humanScore < computerScore){
+        console.log("You lose.");
+        console.log("Final score:\n Player score: " + humanScore + "\n" + "Computer score: " + computerScore);
+        return;
+    }
+
+    else if (humanScore > computerScore){
+        console.log("You win!");
+        console.log("Final score:\n Player score: " + humanScore + "\n" + "Computer score: " + computerScore);
+        return;
+    }
+
+
 }
 
-playGame();
+let humanScore = 0;
+let computerScore = 0;
 
+playGame(humanScore, computerScore);
 
 
 
