@@ -1,24 +1,33 @@
-function getComputerChoice(computerChoice){
-    const choices = ['rock', 'paper', 'scissors']
-    computerChoice = Math.floor(Math.random() * choices.length);
-    return choices[computerChoice];
+function getComputerChoice(){
+    let computer_num = Math.floor(Math.random() * 3);
+    let computerChoice = null;
+
+    if (computer_num === 0){
+        computerChoice = "rock";
+    }
+    else if (computer_num === 1){
+        computerChoice = "paper";
+    }
+    else{
+        computerChoice = "scissors";
+    }
+
+    console.log("Computer: " + computerChoice);
+    return computerChoice;
 }
 
-function getHumanChoice(humanChoice){
+function getHumanChoice(){
     
     const choices = ['rock', 'paper', 'scissors']
-    humanChoice = prompt("Rock, paper, scissors?: ").toLowerCase();
+    let humanChoice = prompt("Rock, paper, scissors?: ").toLowerCase();
 
+    console.log("Player: " + humanChoice);
     return humanChoice;
 }
 
-function playRound(computerChoice, humanChoice){
-    computerChoice = getComputerChoice()
-    humanChoice = getHumanChoice()
-    console.log("Computer: "+ computerChoice);
-    console.log("Player: " + humanChoice);
+function playRound(humanChoice, computerChoice){
 
-    switch (humanChoice){
+    switch(humanChoice){
         case "rock":
             if (computerChoice === "rock")
             {
@@ -75,29 +84,32 @@ function playRound(computerChoice, humanChoice){
             console.log("ERROR Invalid input. Please try again.");
     }
 
-
+    return humanScore, computerScore;
 
 }
 
-function playGame(humanScore, computerScore){
+function playGame(){
 
-    for (let i = 0; i < 5; i++){
-        playRound();
+    let counter = 0;
+
+    while (counter < 5) {
+        let human_selection = getHumanChoice();
+        let computer_selection = getComputerChoice();
+        playRound(human_selection, computer_selection);
+        counter++;
     }
 
-    if (humanScore < computerScore){
-        console.log("You lose.");
-        console.log("Final score:\n Player score: " + humanScore + "\n" + "Computer score: " + computerScore);
-        return;
+    if (computerScore > humanScore){
+        console.log("GAME OVER!\n Your score: " + humanScore + "\n Computer score: " + computerScore);
+    }
+    else if (computerScore < humanScore){
+        console.log("WINNER!\n Your score: " + humanScore + "\n Computer score: " + computerScore);
+    }
+    else{
+            console.log("DRAW!\n Your score: " + humanScore + "\n Computer score: " + computerScore);
     }
 
-    else if (humanScore > computerScore){
-        console.log("You win!");
-        console.log("Final score:\n Player score: " + humanScore + "\n" + "Computer score: " + computerScore);
-        return;
-    }
-
-
+    return;
 }
 
 let humanScore = 0;
